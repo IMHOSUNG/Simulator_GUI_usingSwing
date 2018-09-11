@@ -17,8 +17,9 @@ class Custompanel extends JPanel {
     private JTextArea valueArea;
     private JPanel window = new JPanel();
 
+    public int[] data;
 
-    public Custompanel(twoIntValue in, twoIntValue pos , int id )
+    public Custompanel(twoIntValue in, twoIntValue pos , int id, int[] data )
     {
         setLayout(null);
         this.id = id;
@@ -42,9 +43,8 @@ class Custompanel extends JPanel {
         setSize(new Dimension(120,100));
         upButton.addActionListener(new upButtonListener());
         downButton.addActionListener(new downButtonListener());
-        Runnable runnable = new TextAreaThread(valueArea,in,value, id);
-        Thread thread = new Thread(runnable);
-        thread.start();
+
+        this.data = data;
     }
 
     class upButtonListener implements ActionListener {
@@ -53,6 +53,7 @@ class Custompanel extends JPanel {
         {
             value++;
             valueArea.setText(String.valueOf(value));
+            data[id]++;
         }
     }
 
@@ -62,6 +63,7 @@ class Custompanel extends JPanel {
         {
             value--;
             valueArea.setText(String.valueOf(value));
+            data[id]--;
         }
     }
 
