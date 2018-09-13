@@ -1,5 +1,4 @@
-package com.company;
-
+package windows;
 
 public class twoIntValue
 {
