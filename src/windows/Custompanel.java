@@ -11,6 +11,8 @@ class Custompanel extends JPanel {
     JLabel label ;
 
     public int value = 0;
+    private String unit;
+
     public int id = 0;
 
     private JButton upButton;
@@ -23,40 +25,37 @@ class Custompanel extends JPanel {
 
     public int[] data;
 
-    public Custompanel(twoIntValue in, twoIntValue pos , int id, int[] data )
+    public Custompanel(int id, String unit, int[] data )
     {
+        this.unit = unit;
+        this.id = id;
         setLayout(null);
         //setBackground(new Color(0,0,0,0));
         setOpaque(false);
-        this.id = id;
+
 
         upButton = new JButton(up_img);
         upButton.setSize(30,30);
-        upButton.setLocation(0 ,0);
+        upButton.setLocation(200 ,0);
 
         add(upButton);
 
         downButton = new JButton(down_img);
         downButton.setSize(30,30);
-        downButton.setLocation(0,40);
+        downButton.setLocation(200,30);
         add(downButton);
 
-        /*valueArea = new JTextArea();
-        valueArea.setSize(70,70);
-        valueArea.setLocation(100, 0);
-        valueArea.setText(String.valueOf(value));
-        add(valueArea);
-        */
 
         label = new JLabel();
-        label.setSize(40,40);
-        label.setLocation(50,25);
-        label.setFont(new Font("Serif",Font.BOLD,40));
+        label.setSize(200,40);
+        label.setLocation(0,13);
+        label.setFont(new Font("Serif",Font.BOLD,35));
         label.setForeground(Color.white);
-        label.setText(String.valueOf(value));
+        label.setText(String.valueOf(value) + " " + unit + "  ");
+        label.setHorizontalAlignment(SwingConstants.RIGHT);
         add(label);
 
-        setSize(new Dimension(100,100));
+        setSize(new Dimension(230,70));
         upButton.addActionListener(new upButtonListener());
         downButton.addActionListener(new downButtonListener());
         this.data = data;
@@ -69,8 +68,9 @@ class Custompanel extends JPanel {
         public void actionPerformed(ActionEvent e)
         {
             value++;
+
             //valueArea.setText(String.valueOf(value));
-            label.setText(String.valueOf(value));
+            label.setText(String.valueOf(value) + " " + unit + "  ");
             data[id]++;
         }
     }
@@ -80,8 +80,8 @@ class Custompanel extends JPanel {
         public void actionPerformed(ActionEvent e)
         {
             value--;
-            //valueArea.setText(String.valueOf(value));
-            label.setText(String.valueOf(value));
+
+            label.setText(String.valueOf(value) + " " + unit + "  ");
             data[id]--;
         }
     }
