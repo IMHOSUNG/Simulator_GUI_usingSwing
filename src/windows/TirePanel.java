@@ -11,10 +11,10 @@ import java.util.logging.Logger;
 
 public class TirePanel extends JPanel {
 
-    Custompanel remain_param;
-    Custompanel voltage_param;
-    Custompanel temp_param;
-    Custompanel life_param;
+    Custompanel left_top_param;
+    Custompanel right_top_param;
+    Custompanel left_down_param;
+    Custompanel right_down_param;
 
     URL general_panel = this.getClass().getResource("./images/tire_panel.png");
     private BufferedImage background_img;
@@ -32,23 +32,23 @@ public class TirePanel extends JPanel {
 
 
         //init params
-        remain_param = new Custompanel(11, "ah",  data);
-        voltage_param = new Custompanel(12, "v", data);
-        temp_param = new Custompanel(13, "˚c", data);
-        life_param = new Custompanel(14, "%",data);
+        left_top_param = new Custompanel(12, "psi",  data);
+        right_top_param = new Custompanel(13, "psi", data);
+        left_down_param = new Custompanel(14, "psi", data);
+        right_down_param = new Custompanel(15, "psi",data);
 
         //set layout
         setLayout(null);
 
-        remain_param.setLocation(537,20);
-        voltage_param.setLocation(537,100);
-        temp_param.setLocation(537,180);
-        life_param.setLocation(537,300);
+        left_top_param.setLocation(537,20);
+        right_top_param.setLocation(537,100);
+        left_down_param.setLocation(537,180);
+        right_down_param.setLocation(537,300);
 
-        add(remain_param);
-        add(voltage_param);
-        add(temp_param);
-        add(life_param);
+        add(left_top_param);
+        add(right_top_param);
+        add(left_down_param);
+        add(right_down_param);
 
 
         setVisible(true);

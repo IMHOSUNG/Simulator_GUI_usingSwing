@@ -9,13 +9,13 @@ public class CollisionDetection extends JPanel{
     private boolean is_collision = false;       //set true if collision occur
 
     private JButton collision_button = new JButton();
-    private JLabel collision_label = new JLabel("COLLISION BUTTON");
+    private JLabel collision_label = new JLabel("COLLISION");
     private int id;
     public int[] data;
 
     CollisionDetection(int id, int[] data){
         this.id = id;
-        data[id] = (is_collision) ? 1 : 0;
+        this.data = data;
         this.setLayout(null);
         collision_button.setLocation(200, 0);
         collision_button.setSize(50, 50);
@@ -23,7 +23,7 @@ public class CollisionDetection extends JPanel{
 
         collision_label.setLocation(0, 0);
         collision_label.setSize(150, 100);
-        collision_label.setFont(new Font("Serif",Font.BOLD,10));
+        collision_label.setFont(new Font("Serif",Font.BOLD,15));
         collision_label.setForeground(Color.RED);
 
         this.add(collision_button);
@@ -43,18 +43,17 @@ public class CollisionDetection extends JPanel{
             //when collision is detected, is_collision become 1
             if(!is_collision){
                 is_collision = true;
-                data[id] = (is_collision) ? 1 : 0;
+                data[id] = is_collision ? 1 : 0;
                 collision_button.setBackground(Color.RED);
             }else{
                 is_collision = false;
-                data[id] = (is_collision) ? 1 : 0;
+                data[id] = is_collision ? 1 : 0;
                 collision_button.setBackground(Color.GREEN);
             }
+            TroubleDetection td = new TroubleDetection();
+            td.troubleDetection(id, is_collision ? 1 : 0);
 
         }
     }
-
-
-
 
 }

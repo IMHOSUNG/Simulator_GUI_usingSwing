@@ -8,15 +8,13 @@ import java.net.URL;
 
 class Custompanel extends JPanel {
 
-    JLabel label ;
 
-    public int value = 0;
-    private String unit;
-
+    public int value;
     public int id = 0;
-
+    private String unit;
     private JButton upButton;
     private JButton downButton;
+    private JLabel label;
 
     URL up_img_url = this.getClass().getResource("./images/upper_arrow.png");
     URL down_img_url= this.getClass().getResource("./images/down_arrow.png");;
@@ -27,10 +25,15 @@ class Custompanel extends JPanel {
 
     public Custompanel(int id, String unit, int[] data )
     {
+        // id : unique id of each panel
+        // unit : such as km, v, km/l etc
+        // data : for check logs
         this.unit = unit;
         this.id = id;
+        this.data = data;
+        this.value = data[id];
+
         setLayout(null);
-        //setBackground(new Color(0,0,0,0));
         setOpaque(false);
 
 
@@ -58,31 +61,38 @@ class Custompanel extends JPanel {
         setSize(new Dimension(230,70));
         upButton.addActionListener(new upButtonListener());
         downButton.addActionListener(new downButtonListener());
-        this.data = data;
 
         setVisible(true);
     }
 
     class upButtonListener implements ActionListener {
+        private boolean is_reported = false;
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            value++;
-
-            //valueArea.setText(String.valueOf(value));
-            label.setText(String.valueOf(value) + " " + unit + "  ");
-            data[id]++;
+            if(is_reported == false) {
+                value++;
+                data[id]++;
+                //valueArea.setText(String.valueOf(value));
+                label.setText(String.valueOf(value) + " " + unit + "  ");
+                TroubleDetection td = new TroubleDetection();
+                is_reported = td.troubleDetection(id, value);
+            }
         }
     }
 
     class downButtonListener implements ActionListener {
+        private boolean is_reported = false;
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            value--;
-
-            label.setText(String.valueOf(value) + " " + unit + "  ");
-            data[id]--;
+            if(is_reported == false) {
+                value--;
+                data[id]--;
+                label.setText(String.valueOf(value) + " " + unit + "  ");
+                TroubleDetection td = new TroubleDetection();
+                is_reported = td.troubleDetection(id, value);
+            }
         }
     }
 

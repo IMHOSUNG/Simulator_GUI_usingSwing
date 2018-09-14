@@ -11,10 +11,10 @@ import java.util.logging.Logger;
 
 public class BatteryPanel extends JPanel {
 
-    Custompanel left_top_param;
-    Custompanel right_top_param;
-    Custompanel left_down_param;
-    Custompanel right_down_param;
+    Custompanel remain_param;
+    Custompanel voltage_param;
+    Custompanel temp_param;
+    Custompanel life_param;
 
     URL general_panel = this.getClass().getResource("./images/battery_panel.png");
     private BufferedImage background_img;
@@ -32,23 +32,23 @@ public class BatteryPanel extends JPanel {
 
 
         //init params
-        left_top_param = new Custompanel(7, "ah",  data);
-        right_top_param = new Custompanel(8, "v", data);
-        left_down_param = new Custompanel(9, "c", data);
-        right_down_param = new Custompanel(10, "%",data);
+        remain_param = new Custompanel(12, "ah",  data);
+        voltage_param = new Custompanel(13, "v", data);
+        temp_param = new Custompanel(14, "˚c", data);
+        life_param = new Custompanel(15, "%",data);
 
         //set layout
         setLayout(null);
 
-        left_top_param.setLocation(537,20);
-        right_top_param.setLocation(537,100);
-        left_down_param.setLocation(537,180);
-        right_down_param.setLocation(537,300);
+        remain_param.setLocation(537,20);
+        voltage_param.setLocation(537,100);
+        temp_param.setLocation(537,180);
+        life_param.setLocation(537,300);
 
-        add(left_top_param);
-        add(right_top_param);
-        add(left_down_param);
-        add(right_down_param);
+        add(remain_param);
+        add(voltage_param);
+        add(temp_param);
+        add(life_param);
 
 
         setVisible(true);

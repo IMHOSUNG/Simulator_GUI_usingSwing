@@ -18,7 +18,7 @@ public class GeneralPanel extends JPanel {
     private Custompanel fuel_economy_param;
     private Custompanel today_driven_param;
     private Custompanel total_distance_param;
-    private CollisionDetection collision_paraml;
+    private CollisionDetection collision_param;
     private URL general_panel = this.getClass().getResource("./images/general_panel.png");
     private BufferedImage background_img;
 
@@ -42,7 +42,7 @@ public class GeneralPanel extends JPanel {
         fuel_economy_param = new Custompanel(4, "km/l",data);
         today_driven_param = new Custompanel(5, "km",data);
         total_distance_param = new Custompanel(6, "km",data);
-        collision_paraml = new CollisionDetection(7, data);
+        collision_param = new CollisionDetection(7, data);
 
         //set layout
         setLayout(null);
@@ -54,7 +54,7 @@ public class GeneralPanel extends JPanel {
         fuel_economy_param.setLocation(150,206);
         today_driven_param.setLocation(537,206);
         total_distance_param.setLocation(150,309);
-        collision_paraml.setLocation(437, 309);
+        collision_param.setLocation(437, 309);
         add(speed_param);
         add(rmp_param);
         add(engine_load_param);
@@ -62,7 +62,7 @@ public class GeneralPanel extends JPanel {
         add(fuel_economy_param);
         add(today_driven_param);
         add(total_distance_param);
-        add(collision_paraml);
+        add(collision_param);
 
         setVisible(true);
     }
