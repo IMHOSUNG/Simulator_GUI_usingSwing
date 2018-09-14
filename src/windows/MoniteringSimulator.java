@@ -5,8 +5,8 @@ import javax.swing.JTabbedPane;
 
 public class MoniteringSimulator {
     static int data[] = new int[20];
-
-
+    private static String vin_number;               //vin_number of this car
+    private static boolean is_trouble = false;       //set 1 if trouble occur
     GeneralPanel general_panel = new GeneralPanel(data);
     BatteryPanel batteryPanel = new BatteryPanel(data);
     TirePanel tirePanel = new TirePanel(data);
@@ -29,9 +29,10 @@ public class MoniteringSimulator {
     public static void main(String[] args) {
 
         new MoniteringSimulator();
-
+        vin_number = "GOLD MATIZ";
         while(true)
         {
+
             for(int i = 0; i < 16 ; i++)
             {
                 System.out.print(data[i]+" ");

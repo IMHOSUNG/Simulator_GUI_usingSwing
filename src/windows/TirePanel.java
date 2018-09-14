@@ -34,7 +34,7 @@ public class TirePanel extends JPanel {
         //init params
         remain_param = new Custompanel(11, "ah",  data);
         voltage_param = new Custompanel(12, "v", data);
-        temp_param = new Custompanel(13, "c", data);
+        temp_param = new Custompanel(13, "˚c", data);
         life_param = new Custompanel(14, "%",data);
 
         //set layout
